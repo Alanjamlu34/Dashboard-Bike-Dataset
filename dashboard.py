@@ -5,7 +5,7 @@ import seaborn as sns
 sns.set(style='whitegrid')
 
 # Load the dataset
-df_day = pd.read_csv("D:/Alan/Data SCience/Dicoding/Bike/day.csv")
+df_day = pd.read_csv("day.csv")
 df_day['dteday'] = pd.to_datetime(df_day['dteday'])
 df_day['year'] = df_day['dteday'].dt.year
 
