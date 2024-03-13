@@ -5,7 +5,7 @@ import seaborn as sns
 sns.set(style='whitegrid')
 
 # Load the dataset
-df_day = pd.read_csv("day.csv")
+df_day = pd.read_csv('day.csv')
 df_day['dteday'] = pd.to_datetime(df_day['dteday'])
 df_day['year'] = df_day['dteday'].dt.year
 
@@ -42,7 +42,7 @@ st.sidebar.metric(
 )
 
 
-# FH3: Daily User
+# Daily User
 daily_users_data = filtered_data.groupby('dteday').agg({
     'casual': 'sum',
     'registered': 'sum',
@@ -163,20 +163,19 @@ st.pyplot(fig_fh1)
 
 
 #PLOTTING 5
-# Aggregated data for plotting
-weather_cnt_data = filtered_data.groupby(['weathersit', 'cnt']).size().reset_index(name='count')
-
-# Plotting bar plot
-fig_bar, ax_bar = plt.subplots(figsize=(10, 6))
-bar_data = weather_cnt_data.groupby(['weathersit', 'cnt'])['count'].sum().reset_index()
-sns.barplot(x='weathersit', y='cnt', hue='weathersit', data=bar_data, ax=ax_bar, palette='flare')
-# Set labels and title
-ax_bar.set_xlabel("Weathersit")
-ax_bar.set_ylabel("Total Pengguna (cnt)")
-ax_bar.set_title("Hubungan Weathersit dan Total Pengguna")
+season_data= df_day.groupby('weathersit').agg({
+    'casual':'sum',
+    'registered':'sum'
+}).reset_index()
+fig_fh1, ax_fh1 = plt.subplots()
+sns.barplot(x='weathersit', y='registered', data=season_data, ax=ax_fh1, label='Registered', color="#90CAF9")
+sns.barplot(x='weathersit', y='casual', data=season_data, ax=ax_fh1, label='Casual', color="#FFA07A")
+ax_fh1.set_ylabel("Count")
+ax_fh1.set_title(f"Pengguna Casual dan Registered Berdasarkan Musim")
+ax_fh1.legend()
 
 # Display the plot in Streamlit
-st.pyplot(fig_bar)
+st.pyplot(fig_fh1)
 
 with st.expander("Informasi Tambahan"):
     st.write("""
@@ -186,9 +185,3 @@ with st.expander("Informasi Tambahan"):
     - **2**:  Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
     - **3**: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
     """)
-
-
-
-
-
-
