@@ -249,7 +249,7 @@ with st.expander("Informasi Tambahan"):
     st.write("""
             Perhatikan bahwa data yang digunakan adalah total pengguna dari Januari 2011 hingga 2013 untuk jam 0 hingga 23. 
             Data ini tidak disinkronkan dengan filter "Rentang Waktu" yang diggunakan.\n
-            Plot Di atas adalah klasterisasi sederhana untuk membagi jam pelayanan Bike Sharing dalam beberapa kategori. Kategori yang digunakan adalah:\n
+            Plot di atas adalah klasterisasi sederhana untuk membagi jam pelayanan _Bike Sharing_ dalam beberapa kategori. Kategori yang digunakan adalah:\n
             - **Jam sepi pengguna**:  Untuk jam sepi pengguna dari tabel diatas adalah dari jam 0 hingga 5
             - **Jam sedang pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah setelah jam 10 hingga jam 15, lalu diikuti oleh jam 20 hingga sebelum jam 0.
             - **Jam ramai pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah setelah jam 5 hingga jam 10, lalu diikuti oleh jam 15 hingga sebelum jam 20.\n
