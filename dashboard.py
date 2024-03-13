@@ -11,14 +11,14 @@ df_day['dteday'] = pd.to_datetime(df_day['dteday'])
 df_day['year'] = df_day['dteday'].dt.year
 
 # Sidebar settings
-st.header('Bike Sharing Dataset Analysis :sparkles:')
+st.header('Analisis Dataset Bike Sharing :sparkles:')
 st.sidebar.image("https://storage.googleapis.com/kaggle-datasets-images/3556223/6194875/c51f57d9f027c00fc8d573060eef197b/dataset-cover.jpeg", width=300)
 min_date = df_day['dteday'].min().date()
 max_date = df_day['dteday'].max().date()
 
 # Date range filter
 start_date, end_date = st.sidebar.date_input(
-    label='Date Range',
+    label='Rentang Waktu',
     min_value=min_date,
     max_value=max_date,
     value=[min_date, max_date]
@@ -37,7 +37,7 @@ yesterdays_cnt = int(filtered_data['cnt'].iloc[-2])
 
 # Display the metric in the sidebar with thousand separators
 st.sidebar.metric(
-    label="Daily Users Growth",
+    label="Pertumbuhan harian pengguna",
     value=todays_cnt,
     delta=yesterdays_cnt
 )
@@ -77,7 +77,7 @@ user_counts_data = df_day[['casual', 'registered']].sum()
 fig_pie, ax_pie = plt.subplots()
 ax_pie.pie(user_counts_data, labels=user_counts_data.index, autopct='%2.1f%%', startangle=90, colors=['#FFA07A', '#90CAF9'])
 ax_pie.axis('equal')
-ax_pie.set_title("Percentage of Users (Casual vs Registered)")
+ax_pie.set_title("User Percentages (Casual vs Registered)")
 
 # Display the plot in Streamlit
 st.pyplot(fig_pie)
@@ -112,10 +112,10 @@ filtered_data['season'] = filtered_data['season'].map(season_mapping)
 fig_temp, ax_temp = plt.subplots(figsize=(12, 6))
 ax_temp.scatter(filtered_data['casual'], filtered_data['temp'], label='Casual')
 ax_temp.scatter(filtered_data['registered'], filtered_data['temp'], label='Registered')
-ax_temp.set_xlabel('User Counts')
-ax_temp.set_ylabel('Temperature (normalized)')
+ax_temp.set_xlabel('Jumlah Pengguna')
+ax_temp.set_ylabel('Suhu (normalize)')
 ax_temp.legend()
-ax_temp.set_title('Relationship between bike users and temperature')
+ax_temp.set_title('Relationship Between Bike User and Temperature')
 
 # Display the plot in Streamlit
 st.pyplot(fig_temp)
@@ -136,7 +136,7 @@ fig, ax = plt.subplots()
 sns.regplot(x='cnt', y='temp', data=plot_data, ax=ax, label='temp', color="#FFA07A", line_kws={'color': 'red'})
 ax.set_ylabel("User Counts")
 ax.set_xlabel("Temperature")
-ax.set_title("Total Users vs Temperature")
+ax.set_title("Total User vs Temperature")
 ax.legend()
 
 #subplot 2
@@ -144,7 +144,7 @@ fig2, ax = plt.subplots()
 sns.regplot(x='cnt', y='atemp', data=plot_data, ax=ax, label='atemp', color="#90CAF9", line_kws={'color': 'red'})
 ax.set_ylabel("User Counts")
 ax.set_xlabel("Temperature")
-ax.set_title("Total Users vs ATemperature")
+ax.set_title("Total User vs ATemperature")
 ax.legend()
 
 # Display the plot in Streamlit
@@ -156,14 +156,14 @@ with col2:
     st.pyplot(fig2)
 
 # Expander for additional information
-with st.expander("Additional Information"):
+with st.expander("Informasi Tambahan"):
     st.write("""
-    In general, as the air temperature (temp and atemp) increases, the number of bike users also increases.\n
-    Key:\n
-    - **casual**: number of casual users
-    - **registered**: number of registered users
-    - **temp**: normal temperature in Celsius. These values are obtained through (t-t_min)/(t_max-t_min), t_min=-8, t_max=+39 (only in hourly scale)
-    - **atemp**: feels-like temperature in Celsius. These values are obtained through (t-t_min)/(t_max-t_min), t_min=-16, t_max=+50 (only in hourly scale)
+    Secara umum, semakin tinggi temperatur udara (temp dan atemp), maka semakin banyak pengguna Bike Sharing.\n
+    Ket:\n
+    - **casual**: jumlah pengguna casual
+    - **registered**: jumlah pengguna terdaftar
+    - **temp**: suhu normal dalam Celsius. Nilai-nilai ini diperoleh melalui (t-t_min)/(t_max-t_min), t_min=-8, t_max=+39 (hanya dalam skala per jam)
+    - **atemp**: suhu rasa normal dalam Celsius. Nilai-nilai ini diperoleh melalui (t-t_min)/(t_max-t_min), t_min=-16, t_max=+50 (hanya dalam skala per jam)
     """)
 
 
@@ -175,7 +175,7 @@ fig_fh1, ax_fh1 = plt.subplots()
 sns.barplot(x='season', y='registered', data=season_data, ax=ax_fh1, label='Registered', color="#90CAF9")
 sns.barplot(x='season', y='casual', data=season_data, ax=ax_fh1, label='Casual', color="#FFA07A")
 ax_fh1.set_ylabel("Count")
-ax_fh1.set_title(f"Casual and Registered Users by Season")
+ax_fh1.set_title(f"Casual and Registered User by Season")
 ax_fh1.legend()
 
 # Display the plot in Streamlit
@@ -194,17 +194,17 @@ fig_fh1, ax_fh1 = plt.subplots()
 sns.barplot(x='weathersit', y='registered', data=season_data, ax=ax_fh1, label='Registered', color="#90CAF9")
 sns.barplot(x='weathersit', y='casual', data=season_data, ax=ax_fh1, label='Casual', color="#FFA07A")
 ax_fh1.set_ylabel("Count")
-ax_fh1.set_title(f"Casual and Registered Users by Weather")
+ax_fh1.set_title(f"Casual and Registered User by Weather")
 ax_fh1.legend()
 
 # Display the plot in Streamlit
 st.pyplot(fig_fh1)
 
-with st.expander("Additional Information"):
+with st.expander("Informasi Tambahan"):
     st.write("""
-    The number 1e6 on the displayed plot is scientific notation for the number 1,000,000.\n
-    Generally, the better the weather, the more bike users there are, with 1 being the best weather and 3 being the worst weather.\n
-    Key:\n
+    Angka 1e6 pada plot yang tertampil adalah notasi ilmiah untuk bilangan 1.000.000.\n
+    Secara umum, semakin baik cuacanya, semakin banyak pula pengguna Bike Sharing dengan 1 cuaca paling baik dan 3 cuaca paling buruk.\n
+    Ket:\n
     - **1**: Clear, Few clouds, Partly cloudy, Partly cloudy
     - **2**:  Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
     - **3**: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
@@ -220,6 +220,13 @@ cnt_hour = [39130, 24164, 16352, 8174, 4428, 14261, 55132, 154171, 261001, 15943
             126257, 151320, 184414, 184919, 175652, 183149, 227748, 336860, 309772, 226789,
             164550, 125445, 95612, 63941]
 
+
+# PLOTTING 6
+# Hourly user counts
+cnt_hour = [39130, 24164, 16352, 8174, 4428, 14261, 55132, 154171, 261001, 159438,
+            126257, 151320, 184414, 184919, 175652, 183149, 227748, 336860, 309772, 226789,
+            164550, 125445, 95612, 63941]
+
 # Plotting
 fig_fh2, ax_fh2 = plt.subplots(figsize=(12, 6))
 hours = np.arange(24)
@@ -227,10 +234,10 @@ sns.lineplot(x=hours, y=cnt_hour, ax=ax_fh2, marker='o', color="#90CAF9")
 ax_fh2.set_ylabel("Count")
 ax_fh2.set_xlabel("Hour")
 ax_fh2.set_title("Hourly Users")
-ax_fh2.set_xticks(hours)  # Set the x-axis position according to the number of hours in a day
+ax_fh2.set_xticks(hours)  # Mengatur posisi sumbu x sesuai dengan jumlah jam dalam sehari
 ax_fh2.tick_params(axis='x', rotation=45)
 
-# Add vertical lines at hours 5, 10, 15, and 20
+# Tambahkan garis vertikal pada jam 5, 10, 15, dan 20
 for hour in [5, 10, 15, 20]:
     plt.axvline(x=hour, linestyle='--', color='red')
 
@@ -238,14 +245,14 @@ for hour in [5, 10, 15, 20]:
 st.pyplot(fig_fh2)
 
 
-with st.expander("Additional Information"):
+with st.expander("Informasi Tambahan"):
     st.write("""
-            Note that the data used represents the total users from January 2011 to 2013 for hours 0 to 23. 
-            This data is not synchronized with the "Date Range" filter being used.\n
-            The above plot is a simple clustering to divide the Bike Sharing service hours into several categories. The categories used are:\n
-            - **Low user hours**:  For low user hours from the table above are from hours 0 to 5
-            - **Medium user hours**: For medium user hours from the table above are from hours 10 to 15, followed by hours 20 to before hour 0.
-            - **High user hours**: For high user hours from the table above are from hours 5 to 10, followed by hours 15 to before hour 20.\n
-            The assumption that can be taken from the clustering is that Bike Sharing is busy during commuting hours and after work hours. During midday, 
-            users tend to be "standard" or not too busy. Whereas during late night to early morning while still resting, users are very few.
+            Perhatikan bahwa data yang digunakan adalah total pengguna dari Januari 2011 hingga 2013 untuk jam 0 hingga 23. 
+            Data ini tidak disinkronkan dengan filter "Rentang Waktu" yang diggunakan.\n
+            Plot Di atas adalah klasterisasi sederhana untuk membagi jam pelayanan Bike Sharing dalam beberapa kategori. Kategori yang digunakan adalah:\n
+            - **Jam sepi pengguna**:  Untuk jam sepi pengguna dari tabel diatas adalah dari jam 0 hingga 5
+            - **Jam sedang pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 10 hingga jam 15, lalu diikuti oleh jam 20 hingga sebelum jam 0.
+            - **Jam ramai pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 5 hingga jam 10, lalu diikuti oleh jam 15 hingga sebelum jam 20.\n
+            Asumsi yang bisa diambil dari klasterisasi tersebut adalah bahwa Bike Sharing ramai pengguna pada jam berangkat kerja dan saat pulang kerja. Pada siang hari, 
+            pengguna cenderung "standar" atau tidak terlalu ramai. Sedangkan pada saat larut malam hingga pagi saat masih istirahat, pengguna sangat sedikit.
     """)
