@@ -108,6 +108,18 @@ st.subheader('Users vs Temperature')
 season_mapping = {1: 'Winter', 2: 'Spring', 3: 'Summer', 4: 'Autumn'}
 filtered_data['season'] = filtered_data['season'].map(season_mapping)
 
+# Plotting
+fig_temp, ax_temp = plt.subplots(figsize=(12, 6))
+ax_temp.scatter(filtered_data['casual'], filtered_data['temp'], label='Casual')
+ax_temp.scatter(filtered_data['registered'], filtered_data['temp'], label='Registered')
+ax_temp.set_xlabel('Jumlah Pengguna')
+ax_temp.set_ylabel('Suhu (normalize)')
+ax_temp.legend()
+ax_temp.set_title('Hubungan antara pengguna sepeda dan temperatur')
+
+# Display the plot in Streamlit
+st.pyplot(fig_temp)
+
 # Aggregated data
 season_data = filtered_data.groupby('season').agg({
     'registered': 'sum',
@@ -119,7 +131,6 @@ plot_data = filtered_data.groupby(['temp', 'atemp']).agg({
     'cnt': 'sum'
 }).reset_index()
 
-# Plotting
 #subplot 1
 fig, ax = plt.subplots()
 sns.regplot(x='cnt', y='temp', data=plot_data, ax=ax, label='temp', color="#FFA07A", line_kws={'color': 'red'})
