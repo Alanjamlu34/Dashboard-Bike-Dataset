@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 sns.set(style='whitegrid')
 
 # Load the dataset
@@ -204,21 +205,18 @@ st.subheader('Users vs Hour')
 
 # PLOTTING 6
 # Hourly user counts
-hourly_users_data = filtered_data.groupby(filtered_data['dteday'].dt.hour).agg({
-    'casual': 'sum',
-    'registered': 'sum',
-    'cnt': 'sum'
-}).reset_index()
+cnt_hour = [39130, 24164, 16352, 8174, 4428, 14261, 55132, 154171, 261001, 159438,
+            126257, 151320, 184414, 184919, 175652, 183149, 227748, 336860, 309772, 226789,
+            164550, 125445, 95612, 63941]
 
 # Plotting
 fig_fh2, ax_fh2 = plt.subplots(figsize=(12, 6))
-sns.barplot(x='dteday', y='cnt', data=hourly_users_data, ax=ax_fh2, color="#90CAF9")
+sns.barplot(x=np.arange(24), y=cnt_hour, ax=ax_fh2, color="#90CAF9")
 ax_fh2.set_ylabel("Total Pengguna")
 ax_fh2.set_xlabel("Jam")
 ax_fh2.set_title("Total Pengguna Per Jam dalam Sehari")
-ax_fh2.set_xticklabels(hourly_users_data['dteday'])
+ax_fh2.set_xticks(np.arange(24))  # Mengatur posisi sumbu x sesuai dengan jumlah jam dalam sehari
 ax_fh2.tick_params(axis='x', rotation=45)
 
 # Display the plot in Streamlit
 st.pyplot(fig_fh2)
-
