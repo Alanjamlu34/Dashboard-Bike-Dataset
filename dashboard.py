@@ -251,8 +251,8 @@ with st.expander("Informasi Tambahan"):
             Data ini tidak disinkronkan dengan filter "Rentang Waktu" yang diggunakan.\n
             Plot Di atas adalah klasterisasi sederhana untuk membagi jam pelayanan Bike Sharing dalam beberapa kategori. Kategori yang digunakan adalah:\n
             - **Jam sepi pengguna**:  Untuk jam sepi pengguna dari tabel diatas adalah dari jam 0 hingga 5
-            - **Jam sedang pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 10 hingga jam 15, lalu diikuti oleh jam 20 hingga sebelum jam 0.
-            - **Jam ramai pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 5 hingga jam 10, lalu diikuti oleh jam 15 hingga sebelum jam 20.\n
+            - **Jam sedang pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah setelah jam 10 hingga jam 15, lalu diikuti oleh jam 20 hingga sebelum jam 0.
+            - **Jam ramai pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah setelah jam 5 hingga jam 10, lalu diikuti oleh jam 15 hingga sebelum jam 20.\n
             Asumsi yang bisa diambil dari klasterisasi tersebut adalah bahwa Bike Sharing ramai pengguna pada jam berangkat kerja dan saat pulang kerja. Pada siang hari, 
             pengguna cenderung "standar" atau tidak terlalu ramai. Sedangkan pada saat larut malam hingga pagi saat masih istirahat, pengguna sangat sedikit.
     """)
