@@ -220,6 +220,13 @@ cnt_hour = [39130, 24164, 16352, 8174, 4428, 14261, 55132, 154171, 261001, 15943
             126257, 151320, 184414, 184919, 175652, 183149, 227748, 336860, 309772, 226789,
             164550, 125445, 95612, 63941]
 
+
+# PLOTTING 6
+# Hourly user counts
+cnt_hour = [39130, 24164, 16352, 8174, 4428, 14261, 55132, 154171, 261001, 159438,
+            126257, 151320, 184414, 184919, 175652, 183149, 227748, 336860, 309772, 226789,
+            164550, 125445, 95612, 63941]
+
 # Plotting
 fig_fh2, ax_fh2 = plt.subplots(figsize=(12, 6))
 hours = np.arange(24)
@@ -230,5 +237,22 @@ ax_fh2.set_title("Total Pengguna Per Jam dalam Sehari")
 ax_fh2.set_xticks(hours)  # Mengatur posisi sumbu x sesuai dengan jumlah jam dalam sehari
 ax_fh2.tick_params(axis='x', rotation=45)
 
+# Tambahkan garis vertikal pada jam 5, 10, 15, dan 20
+for hour in [5, 10, 15, 20]:
+    plt.axvline(x=hour, linestyle='--', color='red')
+
 # Display the plot in Streamlit
 st.pyplot(fig_fh2)
+
+
+with st.expander("Penting"):
+    st.write("""
+             Perhatikan bahwa data yang digunakan adalah total pengguna dari Januari 2011 hingga 2013 dari jam 0 hingga 23. 
+             Data ini tidak disinkronkan dengan filter "Rentang Waktu" yang diggunakan.\n
+                Plot Di atas adalah klasterisasi sederhana untuk membagi jam pelayanan Bike Sharing dalam beberapa kategori. Kategori yang digunakan adalah:
+                Jam sepi pengguna; Untuk jam sepi pengguna dari tabel diatas adalah dari jam 0 hingga 5
+                Jam sedang pengguna; Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 10 hingga jam 15, lalu diikuti oleh jam 20 hingga sebelum jam 0.
+                Jam ramai pengguna; Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 5 hingga jam 10, lalu diikuti oleh jam 15 hingga sebelum jam 20. 
+                Asumsi yang bisa diambil dari klasterisasi tersebut adalah bahwa Bike Sharing ramai pengguna pada jam berangkat kerja dan saat pulang kerja. Pada siang hari, 
+                pengguna cenderung "standar" atau tidak terlalu ramai. Sedangkan pada saat larut malam hingga pagi saat masih istirahat, pengguna sangat sedikit.\n
+    """)
