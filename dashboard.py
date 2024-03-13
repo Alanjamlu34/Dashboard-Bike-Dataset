@@ -202,6 +202,7 @@ st.pyplot(fig_fh1)
 
 with st.expander("Informasi Tambahan"):
     st.write("""
+    Angka 1e6 pada plot yang tertampil adalah notasi ilmiah untuk bilangan 1.000.000.\n
     Secara umum, semakin baik cuacanya, semakin banyak pula pengguna Bike Sharing dengan 1 cuaca paling baik dan 3 cuaca paling buruk.\n
     Ket:\n
     - **1**: Clear, Few clouds, Partly cloudy, Partly cloudy
@@ -214,7 +215,6 @@ with st.expander("Informasi Tambahan"):
 
 st.subheader('Users vs Hour')
 
-# PLOTTING 6
 # Hourly user counts
 cnt_hour = [39130, 24164, 16352, 8174, 4428, 14261, 55132, 154171, 261001, 159438,
             126257, 151320, 184414, 184919, 175652, 183149, 227748, 336860, 309772, 226789,
@@ -252,7 +252,7 @@ with st.expander("Penting"):
             Plot Di atas adalah klasterisasi sederhana untuk membagi jam pelayanan Bike Sharing dalam beberapa kategori. Kategori yang digunakan adalah:\n
             - **Jam sepi pengguna**:  Untuk jam sepi pengguna dari tabel diatas adalah dari jam 0 hingga 5
             - **Jam sedang pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 10 hingga jam 15, lalu diikuti oleh jam 20 hingga sebelum jam 0.
-            - **Jam ramai pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 5 hingga jam 10, lalu diikuti oleh jam 15 hingga sebelum jam 20.
+            - **Jam ramai pengguna**: Untuk jam sedang pengguna dari tabel diatas adalah jetelah jam 5 hingga jam 10, lalu diikuti oleh jam 15 hingga sebelum jam 20.\n
             Asumsi yang bisa diambil dari klasterisasi tersebut adalah bahwa Bike Sharing ramai pengguna pada jam berangkat kerja dan saat pulang kerja. Pada siang hari, 
             pengguna cenderung "standar" atau tidak terlalu ramai. Sedangkan pada saat larut malam hingga pagi saat masih istirahat, pengguna sangat sedikit.
     """)
