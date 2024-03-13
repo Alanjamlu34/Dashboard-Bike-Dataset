@@ -211,11 +211,12 @@ cnt_hour = [39130, 24164, 16352, 8174, 4428, 14261, 55132, 154171, 261001, 15943
 
 # Plotting
 fig_fh2, ax_fh2 = plt.subplots(figsize=(12, 6))
-sns.barplot(x=np.arange(24), y=cnt_hour, ax=ax_fh2, color="#90CAF9")
+hours = np.arange(24)
+sns.lineplot(x=hours, y=cnt_hour, ax=ax_fh2, marker='o', color="#90CAF9")
 ax_fh2.set_ylabel("Total Pengguna")
 ax_fh2.set_xlabel("Jam")
 ax_fh2.set_title("Total Pengguna Per Jam dalam Sehari")
-ax_fh2.set_xticks(np.arange(24))  # Mengatur posisi sumbu x sesuai dengan jumlah jam dalam sehari
+ax_fh2.set_xticks(hours)  # Mengatur posisi sumbu x sesuai dengan jumlah jam dalam sehari
 ax_fh2.tick_params(axis='x', rotation=45)
 
 # Display the plot in Streamlit
