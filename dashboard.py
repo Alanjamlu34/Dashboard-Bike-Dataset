@@ -196,3 +196,26 @@ with st.expander("Informasi Tambahan"):
     - **2**:  Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
     - **3**: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
     """)
+
+
+# PLOTTING 6
+
+st.subheader('Users vs Hour')
+
+# Monthly user counts
+monthly_users_data = filtered_data.groupby(filtered_data['dteday'].dt.to_period("M")).agg({
+    'casual': 'sum',
+    'registered': 'sum',
+    'cnt': 'sum'
+}).reset_index()
+
+# Plotting
+fig_fh2, ax_fh2 = plt.subplots(figsize=(12, 6))
+sns.barplot(x='dteday', y='cnt', data=monthly_users_data, ax=ax_fh2, color="#90CAF9")
+ax_fh2.set_ylabel("Total Pengguna")
+ax_fh2.set_xlabel("Bulan")
+ax_fh2.set_title("Total Pengguna Per Bulan")
+ax_fh2.set_xticklabels([d.strftime('%b %Y') for d in monthly_users_data['dteday']], rotation=45)
+
+# Display the plot in Streamlit
+st.pyplot(fig_fh2)
