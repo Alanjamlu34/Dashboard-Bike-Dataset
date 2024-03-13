@@ -49,7 +49,7 @@ daily_users_data = filtered_data.groupby('dteday').agg({
     'cnt': 'sum'
 }).reset_index()
 
-st.subheader('Daily Users')
+st.subheader('Total Users')
 
 col1, col2, col3 = st.columns(3)
 
@@ -83,6 +83,7 @@ st.pyplot(fig_pie)
 
 
 #PLOT 2
+st.subheader('Daily Users')
 # set figure size
 fig_fh3, ax_fh3 = plt.subplots(figsize=(16, 8))
 # Plotting
@@ -97,7 +98,11 @@ ax_fh3.legend(["Casual", "Registered"])
 # Display the plot in Streamlit
 st.pyplot(fig_fh3)
 
+
 #PLOT 3
+
+st.subheader('Users vs Temperature')
+
 # Map numeric season values to labels
 season_mapping = {1: 'Winter', 2: 'Spring', 3: 'Summer', 4: 'Autumn'}
 filtered_data['season'] = filtered_data['season'].map(season_mapping)
@@ -151,6 +156,9 @@ with st.expander("Informasi Tambahan"):
 
 
 #PLOTTING 4
+
+st.subheader('Users vs Season')
+
 fig_fh1, ax_fh1 = plt.subplots()
 sns.barplot(x='season', y='registered', data=season_data, ax=ax_fh1, label='Registered', color="#90CAF9")
 sns.barplot(x='season', y='casual', data=season_data, ax=ax_fh1, label='Casual', color="#FFA07A")
@@ -163,6 +171,9 @@ st.pyplot(fig_fh1)
 
 
 #PLOTTING 5
+
+st.subheader('Users vs Weather')
+
 season_data= df_day.groupby('weathersit').agg({
     'casual':'sum',
     'registered':'sum'
