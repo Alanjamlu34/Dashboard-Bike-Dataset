@@ -247,7 +247,7 @@ st.pyplot(fig_fh2)
 
 with st.expander("Penting"):
     st.write("""
-            Perhatikan bahwa data yang digunakan adalah total pengguna dari Januari 2011 hingga 2013 dari jam 0 hingga 23. 
+            Perhatikan bahwa data yang digunakan adalah total pengguna dari Januari 2011 hingga 2013 untuk jam 0 hingga 23. 
             Data ini tidak disinkronkan dengan filter "Rentang Waktu" yang diggunakan.\n
             Plot Di atas adalah klasterisasi sederhana untuk membagi jam pelayanan Bike Sharing dalam beberapa kategori. Kategori yang digunakan adalah:\n
             - **Jam sepi pengguna**:  Untuk jam sepi pengguna dari tabel diatas adalah dari jam 0 hingga 5
