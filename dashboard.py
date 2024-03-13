@@ -202,8 +202,9 @@ with st.expander("Informasi Tambahan"):
 
 st.subheader('Users vs Hour')
 
-# Monthly user counts
-monthly_users_data = filtered_data.groupby(filtered_data['dteday'].dt.to_period("M")).agg({
+# PLOTTING 6
+# Hourly user counts
+hourly_users_data = filtered_data.groupby(filtered_data['dteday'].dt.hour).agg({
     'casual': 'sum',
     'registered': 'sum',
     'cnt': 'sum'
@@ -211,11 +212,13 @@ monthly_users_data = filtered_data.groupby(filtered_data['dteday'].dt.to_period(
 
 # Plotting
 fig_fh2, ax_fh2 = plt.subplots(figsize=(12, 6))
-sns.barplot(x='dteday', y='cnt', data=monthly_users_data, ax=ax_fh2, color="#90CAF9")
+sns.barplot(x='dteday', y='cnt', data=hourly_users_data, ax=ax_fh2, color="#90CAF9")
 ax_fh2.set_ylabel("Total Pengguna")
-ax_fh2.set_xlabel("Bulan")
-ax_fh2.set_title("Total Pengguna Per Bulan")
-ax_fh2.set_xticklabels([d.strftime('%b %Y') for d in monthly_users_data['dteday']], rotation=45)
+ax_fh2.set_xlabel("Jam")
+ax_fh2.set_title("Total Pengguna Per Jam dalam Sehari")
+ax_fh2.set_xticklabels(hourly_users_data['dteday'])
+ax_fh2.tick_params(axis='x', rotation=45)
 
 # Display the plot in Streamlit
 st.pyplot(fig_fh2)
+
