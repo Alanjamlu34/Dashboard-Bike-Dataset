@@ -257,8 +257,8 @@ with st.expander("Informasi Tambahan"):
             pengguna cenderung "standar" atau tidak terlalu ramai. Sedangkan pada saat larut malam hingga pagi saat masih istirahat, pengguna sangat sedikit.
     """)
 
-# Additional information directing users to access the code on GitHub
 
-# Additional information directing users to access the code on GitHub in the sidebar
-st.sidebar.markdown("If you want to view the code, you can access it on [GitHub](https://github.com/Alanjamlu34/Dashboard-Bike-Dataset.git).")
+# Additional information directing users to access the code on GitHub in the sidebar with smaller font size
+st.sidebar.markdown("<font size='2'>If you want to view the code, you can access it on <a href='https://github.com/Alanjamlu34/Dashboard-Bike-Dataset.git'>GitHub</a>.</font>", unsafe_allow_html=True)
+
 
