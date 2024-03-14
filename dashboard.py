@@ -32,8 +32,8 @@ end_date = pd.to_datetime(end_date)
 filtered_data = df_day[(df_day['dteday'] >= start_date) & (df_day['dteday'] <= end_date)]
 
 # Calculate today's count and yesterday's count
-todays_cnt = int(filtered_data['cnt'].iloc[-1])
-yesterdays_cnt = int(filtered_data['cnt'].iloc[-2])
+todays_cnt = int(filtered_data['cnt'].iloc[0])
+yesterdays_cnt = int(filtered_data['cnt'].iloc[-1])
 
 # Display the metric in the sidebar with thousand separators
 st.sidebar.metric(
