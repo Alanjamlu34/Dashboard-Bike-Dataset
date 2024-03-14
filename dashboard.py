@@ -258,4 +258,7 @@ with st.expander("Informasi Tambahan"):
     """)
 
 # Additional information directing users to access the code on GitHub
-st.markdown("If you want to view the code, you can access it on [GitHub](https://github.com/Alanjamlu34/Dashboard-Bike-Dataset.git).")
+
+# Additional information directing users to access the code on GitHub in the sidebar
+st.sidebar.markdown("If you want to view the code, you can access it on [GitHub](https://github.com/Alanjamlu34/Dashboard-Bike-Dataset.git).")
+
