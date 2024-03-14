@@ -16,6 +16,5 @@ streamlit run dashboard.py
 ## Jupyter File
 ```
 File analisis data Bike Sharing
-https://github.com/Alanjamlu34/Bike-Dataset.git
 ```
-
+https://github.com/Alanjamlu34/Bike-Dataset.git
