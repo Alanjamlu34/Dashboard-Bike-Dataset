@@ -259,6 +259,6 @@ with st.expander("Informasi Tambahan"):
 
 
 # Additional information directing users to access the code on GitHub in the sidebar with smaller font size
-st.sidebar.markdown("<font size='2'>If you want to view the code, you can access it on <a href='https://github.com/Alanjamlu34/Dashboard-Bike-Dataset.git'>GitHub</a>.</font>", unsafe_allow_html=True)
+st.sidebar.markdown("<font size='2'>View the code <a href='https://github.com/Alanjamlu34/Dashboard-Bike-Dataset.git'>GitHub</a>.</font>", unsafe_allow_html=True)
 
 
