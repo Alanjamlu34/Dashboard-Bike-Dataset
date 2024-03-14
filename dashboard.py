@@ -256,3 +256,6 @@ with st.expander("Informasi Tambahan"):
             Asumsi yang bisa diambil dari klasterisasi tersebut adalah bahwa Bike Sharing ramai pengguna pada jam berangkat kerja dan saat pulang kerja. Pada siang hari, 
             pengguna cenderung "standar" atau tidak terlalu ramai. Sedangkan pada saat larut malam hingga pagi saat masih istirahat, pengguna sangat sedikit.
     """)
+
+# Additional information directing users to access the code on GitHub
+st.markdown("If you want to view the code, you can access it on [GitHub](https://github.com/Alanjamlu34/Dashboard-Bike-Dataset.git).")
