@@ -18,7 +18,7 @@ max_date = df_day['dteday'].max().date()
 
 # Date range filter
 start_date, end_date = st.sidebar.date_input(
-    label='Rentang Waktu',
+    label='Timeline',
     min_value=min_date,
     max_value=max_date,
     value=[min_date, max_date]
@@ -37,7 +37,7 @@ yesterdays_cnt = int(filtered_data['cnt'].iloc[-2])
 
 # Display the metric in the sidebar with thousand separators
 st.sidebar.metric(
-    label="Pertumbuhan harian pengguna",
+    label="Daily growth of users",
     value=todays_cnt,
     delta=yesterdays_cnt
 )
