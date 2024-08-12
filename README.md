@@ -2,6 +2,7 @@
 https://dashboard-bike-datasetgit-hilfqcu8gkvdtej3vzeo6p.streamlit.app/
 
 ## Setup environment
+Set up a virtual environment on your machine to ensure that the code runs with the compatible requirements.
 ```
 CD path-to-your-directory
 py -m venv venv
